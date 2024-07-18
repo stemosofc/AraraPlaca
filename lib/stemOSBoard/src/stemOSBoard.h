@@ -19,6 +19,13 @@ ServoOS servo1(PORTA_1_SERVO);
 ServoOS servo2(PORTA_2_SERVO);
 ServoOS servo3(PORTA_3_SERVO);
 
+Digital digital1(PortasDigitais::PORTA_1);
+Digital digital2(PortasDigitais::PORTA_2);
+Digital digital3(PortasDigitais::PORTA_3);
+Digital digital4(PortasDigitais::PORTA_4);
+
 stemWiFi wifi;
+
+Gamepad gamepad;
 
 #endif

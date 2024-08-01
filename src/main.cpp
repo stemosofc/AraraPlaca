@@ -1,28 +1,21 @@
 #include "stemOSBoard.h"
 
+Digital di1(PortasDigitais::PORTA_1);
+
 void setup() {
-  Arara.start();
+  Serial.begin(115200);
 }
 
 
 void loop() {
-  double y = gamepad.getLeftAxisY();
-  double x = -gamepad.getRightAxisX();
+ if(!di1.getInput()) {
+    servo1.setPosition(270);
+ } else {
+    servo1.setPosition(0);
+ }
 
-  double powerLeft = y + x;
-  double rightPower = y - x;
-
-  double maxValue = max(abs(powerLeft), abs(rightPower));
-
-  if(maxValue > 1) {
-    powerLeft /= maxValue;
-    rightPower /= maxValue;
-  }
-
-  motor1.setPower(-rightPower);
-  motor2.setPower(powerLeft);
-  motor3.setPower(-rightPower);
-  motor4.setPower(powerLeft);
+ Serial.print("Posição Encoder: ");
+ Serial.println(motor1.encoder.getPosition());
 }
 
 
